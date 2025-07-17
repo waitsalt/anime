@@ -1,0 +1,22 @@
+#app,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+a {
+    text-decoration: none;
+}
+
+p {
+    margin: 0;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box; /* 所有元素和伪元素都生效 */
+    user-select: none;
+}
