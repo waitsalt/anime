@@ -1,7 +1,41 @@
 <script lang="ts" setup>
 import { openUrl } from "@tauri-apps/plugin-opener";
+import { invoke } from "@tauri-apps/api/core";
+import { notify } from "@kyvg/vue3-notification";
+import { ref } from "vue";
 
 const bangumiAccessTokenGetUrl = "https://next.bgm.tv/demo/access-token/create";
+
+const loginAccessToken = ref("");
+
+const loginLoginClick = async () => {
+    // 获取输入框里的值
+    const accessToken = loginAccessToken.value;
+
+    // 验证 access_token 的长度
+    if (accessToken.length != 40) {
+        notify({
+            type: "error",
+            title: "登录",
+            text: "accessToken 错误",
+        });
+
+        return;
+    }
+
+    // 尝试验证 access_token 的有效性
+    const a = await invoke("login", {
+        accessToken: accessToken,
+    });
+
+    console.log(a);
+
+    notify({
+        type: "success",
+        title: "登录",
+        text: `登录成功`,
+    });
+};
 </script>
 
 <template>
@@ -25,8 +59,9 @@ const bangumiAccessTokenGetUrl = "https://next.bgm.tv/demo/access-token/create";
                 type="text"
                 class="loginAccessTokenInput"
                 placeholder="请填入你的accessToken"
+                v-model="loginAccessToken"
             />
-            <div class="loginBtn">登录</div>
+            <div class="loginBtn" @click="loginLoginClick()">登录</div>
         </div>
     </div>
 </template>

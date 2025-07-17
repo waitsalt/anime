@@ -22,6 +22,7 @@ setCurrentTheme("mocha");
             </div>
         </div>
     </main>
+    <notifications />
 </template>
 
 <style scoped>

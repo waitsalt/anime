@@ -1,14 +1,15 @@
 import { computed, ref, watchEffect } from "vue";
 
 enum ThemeType {
-  Light = "light",
+  Auto = "auto",
   Dark = "dark",
+  Light = "light",
 }
 
 interface Theme {
   // 基础配置
   name: string; // 主题名称
-  type: ThemeType; // 主题类型(light/dark)
+  type: ThemeType; // 主题类型(auto/dark/light)
 
   // 基础背景色
   base: string; // 主要背景色(如页面主体背景)
@@ -216,7 +217,6 @@ function applyTheme() {
   Object.entries(theme).forEach(([key, value]) => {
     if (key === "name" || key === "type") return;
     root.style.setProperty(`--ctp-${key}`, value);
-    console.log(`--ctp-${key}:${value}`);
   });
 
   // 设置文档主题属性
@@ -227,5 +227,4 @@ watchEffect(() => {
   applyTheme();
 });
 
-export type { Theme, ThemeType };
-export { currentTheme, setCurrentTheme };
+export { type Theme, type ThemeName, ThemeType, currentTheme, setCurrentTheme };

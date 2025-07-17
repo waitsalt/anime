@@ -38,9 +38,14 @@ const startDrag = (e: MouseEvent) => {
 const handleDrag = (e: MouseEvent) => {
     if (!isDragging.value) return;
 
+    let x = e.clientX - dragOffset.value.x;
+    x = x > 0 ? x : 0;
+    let y = e.clientY - dragOffset.value.y;
+    y = y > 0 ? y : 0;
+
     position.value = {
-        x: e.clientX - dragOffset.value.x,
-        y: e.clientY - dragOffset.value.y,
+        x: x,
+        y: y,
     };
 
     // 保存位置到本地存储
