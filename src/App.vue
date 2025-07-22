@@ -1,10 +1,16 @@
 <script setup lang="ts">
+// 引入通知组件库
+import { toast, Toaster } from "vue-sonner";
+import "vue-sonner/style.css";
 import CurrentPathComp from "./comp/CurrentPathComp.vue";
 import SideBarComp from "./comp/SideBarComp.vue";
 import TopBarComp from "./comp/TopBarComp.vue";
-import { setCurrentTheme } from "./common/theme";
+import { themeConfigDefault, useThemeStore } from "./module/theme/model";
 
-setCurrentTheme("mocha");
+toast.success("nhoa");
+
+const themeStore = useThemeStore();
+themeStore.themeConfigManager.setConfig(themeConfigDefault);
 </script>
 
 <template>
@@ -22,7 +28,7 @@ setCurrentTheme("mocha");
             </div>
         </div>
     </main>
-    <notifications />
+    <Toaster />
 </template>
 
 <style scoped>

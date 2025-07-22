@@ -1,3 +1,5 @@
+pub mod common;
 pub mod config;
-pub mod server;
+pub mod model;
+pub mod service;
 pub mod theme;
