@@ -1,3 +1,6 @@
+/* 通用设置 */
+
+/* 让 app 占满全部界面 不留白边 */
 #app,
 body {
     margin: 0;
@@ -6,17 +9,58 @@ body {
     height: 100vh;
 }
 
+/* 取消 a 标签的下划线和默认变色 */
 a {
     text-decoration: none;
 }
 
-p {
+/* 取消 p 标签的外边距 */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     margin: 0;
 }
 
+/* 取消所有元素的可可选中状态 并将内部填充算入模型大小计算 */
 *,
 *::before,
 *::after {
     box-sizing: border-box; /* 所有元素和伪元素都生效 */
     user-select: none;
+}
+
+/* 通用可点击元素样式 */
+.commonClick {
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.commonClick:hover {
+    border-radius: 10px;
+    background-color: var(--ctp-surface0);
+}
+
+.commonClick:active {
+    border-radius: 10px;
+    background-color: var(--ctp-surface1);
+}
+
+.commonClickActive {
+    border-radius: 10px;
+    color: var(--ctp-mauve);
+}
+
+/* 通用元素容器样式 */
+.commonContainer {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }

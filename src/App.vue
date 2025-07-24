@@ -1,19 +1,18 @@
 <script setup lang="ts">
 // 引入通知组件库
-import { toast, Toaster } from "vue-sonner";
+import { Toaster } from "vue-sonner";
 import "vue-sonner/style.css";
 import CurrentPathComp from "./comp/CurrentPathComp.vue";
 import SideBarComp from "./comp/SideBarComp.vue";
 import TopBarComp from "./comp/TopBarComp.vue";
 import { themeConfigDefault, useThemeStore } from "./module/theme/model";
 
-toast.success("nhoa");
-
 const themeStore = useThemeStore();
 themeStore.themeConfigManager.setConfig(themeConfigDefault);
 </script>
 
 <template>
+    <Toaster />
     <CurrentPathComp />
     <main class="appContainer">
         <div class="leftAppContainer">
@@ -28,7 +27,6 @@ themeStore.themeConfigManager.setConfig(themeConfigDefault);
             </div>
         </div>
     </main>
-    <Toaster />
 </template>
 
 <style scoped>
@@ -42,7 +40,7 @@ themeStore.themeConfigManager.setConfig(themeConfigDefault);
 }
 
 .leftAppContainer {
-    width: 50px;
+    /* width: 50px; */
     height: 100%;
     background-color: var(--ctp-mantle);
     border-right: 1px solid var(--ctp-surface0);
@@ -58,9 +56,7 @@ themeStore.themeConfigManager.setConfig(themeConfigDefault);
 }
 
 .topAppItem {
-    height: 50px;
     display: flex;
-    align-items: center;
     background-color: var(--ctp-crust);
     border-bottom: 1px solid var(--ctp-surface0);
 }

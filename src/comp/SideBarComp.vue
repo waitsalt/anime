@@ -1,14 +1,20 @@
 <script lang="ts" setup>
 import { HiSearch } from "vue-icons-plus/hi";
+import { useRoute, useRouter } from "vue-router";
+
+const route = useRoute();
+const router = useRouter();
 </script>
 
 <template>
     <div class="sideBarContainer">
         <div class="sideBarTop">
-            <div class="sideBarSearch sideBarItem">
-                <div class="sideBarLogo">
-                    <HiSearch />
-                </div>
+            <div
+                @click="router.push('/search')"
+                class="commonClick sideBarSearch sideBarItem"
+                :class="{ commonClickActive: route.name == '搜索' }"
+            >
+                <HiSearch />
             </div>
         </div>
         <div class="sideBarmiddle">
@@ -24,15 +30,12 @@ import { HiSearch } from "vue-icons-plus/hi";
 
 <style scoped>
 .sideBarContainer {
+    padding: 5px;
     width: 100%;
     height: 100%;
 }
 
-.sideBarItem {
-    width: 50px;
-    height: 50px;
-    display: flex;
-    justify-content: center; /* 水平居中 */
-    align-items: center; /* 垂直居中 */
+.sideBarTop {
+    /* margin-top: 10px; */
 }
 </style>
