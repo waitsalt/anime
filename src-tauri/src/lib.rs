@@ -16,8 +16,6 @@ pub fn run() {
         .invoke_handler(tauri::generate_handler![
             module::config::config_get,
             module::config::config_set,
-            module::bangumi::bangumi_access_token_check,
-            module::bangumi::bangumi_get_me,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
